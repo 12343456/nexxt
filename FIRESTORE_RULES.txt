@@ -1,0 +1,19 @@
+NEXXT uses the same Firestore data model as the web version.
+
+IMPORTANT: keep the Firestore rules already used by the NEXXT web site.
+The native app must NOT use a different friend data model.
+
+Friend data model used by the web site:
+- users/{uid}.friends = array of friend UIDs
+- friendRequests/{fromUid}_{toUid}
+  - fromUid
+  - toUid
+  - fromDisplayName
+  - fromNickname
+  - toNickname
+  - status = "pending"
+  - createdAt = server timestamp
+
+When a request is accepted, the web site adds each UID to the other user's
+friends array and deletes the friendRequests document.
+When a request is rejected, the friendRequests document is deleted.
