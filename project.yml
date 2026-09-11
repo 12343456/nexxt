@@ -7,7 +7,7 @@ options:
 
 settings:
   base:
-    SWIFT_VERSION: 5.9
+    SWIFT_VERSION: "5.9"
     CODE_SIGN_STYLE: Automatic
 
 targets:
@@ -19,15 +19,15 @@ targets:
       - path: .
         excludes:
           - project.yml
-          - .github
+          - .github/**
+          - .git/**
           - README.md
           - FIRESTORE_RULES.txt
+          - "*.md"
 
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nexxt.messenger
-        INFOPLIST_KEY_CFBundleDisplayName: NEXXT
-        INFOPLIST_KEY_UILaunchScreen_Generation: true
-        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: true
+        INFOPLIST_FILE: Info.plist
         TARGETED_DEVICE_FAMILY: "1,2"
         SUPPORTS_MACCATALYST: false
