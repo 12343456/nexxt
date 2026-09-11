@@ -11,14 +11,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Remove old workflow project file
+        run: rm -f .github/workflows/project.yml
+
       - name: Install XcodeGen
         run: brew install xcodegen
 
       - name: Generate Xcode project
         run: xcodegen generate
-
-      - name: Show Xcode version
-        run: xcodebuild -version
 
       - name: Build NEXXT
         run: |
@@ -35,7 +35,7 @@ jobs:
       - name: Package app
         run: |
           mkdir -p artifact
-          cp -R build/Build/Products/Release-iphoneos/NEXXT.app artifact/
+          cp -R build/Build/Products/Release-iphoneos/NEXXT.app artifact/NEXXT.app
 
       - name: Upload NEXXT
         uses: actions/upload-artifact@v4
